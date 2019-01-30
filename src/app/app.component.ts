@@ -1,5 +1,7 @@
 import { Component, ViewChild, ElementRef, NgZone, Renderer } from '@angular/core';
 import { Router, RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,15 @@ import { Router, RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, 
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'rotesTest';
-  constructor(){}
+  title = 'routesTest';
+  constructor(
+    private _loginService: LoginService
+  ){}
    ngOnInit() {
+  }
+
+  get isLogin():boolean{
+    return this._loginService.isLogin();
   }
 
 }
